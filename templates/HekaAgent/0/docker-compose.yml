@@ -7,4 +7,4 @@ heka-agent:
   - KAFKA_SERVERS=${kafka_servers}
   - KAFKA_TOPIC=${kafka_topic}
   labels:
-  - io.rancher.scheduler.global: true
+    io.rancher.scheduler.global: 'true'
