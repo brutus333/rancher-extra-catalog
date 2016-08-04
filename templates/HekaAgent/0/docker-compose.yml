@@ -1,0 +1,10 @@
+heka-agent:
+  tty: true
+  image: brutus333/docker-heka-agent
+  volumes:
+  - /var/run/docker.sock:/var/run/docker.sock:ro
+  environment:
+  - KAFKA_SERVERS=${kafka_servers}
+  - KAFKA_TOPIC=${kafka_topic}
+  labels:
+  - io.rancher.scheduler.global: true

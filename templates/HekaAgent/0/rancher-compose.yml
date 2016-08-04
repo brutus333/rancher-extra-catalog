@@ -1,0 +1,16 @@
+.catalog:
+  name: HekaAgent
+  version: 0.1.0
+  description: |
+    Heka agent for docker logs and events with kafka output
+  questions:
+    - variable: "kafka_servers"
+      description: "List of kafka servers and ports separated by : and comma"
+      label: "Kafka servers list"
+      required: true
+      type: "string"
+    - variable: "kafka_topic"
+      description: "Kafka topic for docker logs and events"
+      label: "Kafka topic"
+      required: true
+      type: "string"

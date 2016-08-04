@@ -1,0 +1,5 @@
+name: Heka agent
+description: |
+    Heka agent with DockerLogInput, DockerEventInput and KafkaOutput plugins
+version: 0.1.0
+category: Logging
