@@ -1,0 +1,55 @@
+prom-rancher-sd:
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.pull_image: 'always'
+  tty: true
+  image: brutus333/prom-rancher-sd
+  stdin_open: true
+prom-conf:
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: brutus333/prom-conf
+  stdin_open: true
+prometheus-rancher:
+  labels:
+    io.rancher.sidekicks: prom-rancher-sd,prom-conf
+    io.rancher.scheduler.affinity:host_label: "${HOST_LABEL}"
+    io.rancher.container.pull_image: 'always'
+  command:
+  - -config.file=/etc/prometheus/prometheus.yml
+  - -storage.local.path=/prometheus
+  - -web.console.libraries=/etc/prometheus/console_libraries
+  - -web.console.templates=/etc/prometheus/consoles
+  tty: true
+  ports:
+  - 9090:9090/tcp
+  log_opt:
+    max-size: 10m
+  image: prom/prometheus:v1.0.1
+  volumes:
+  - prometheus:/prometheus
+  volumes_from:
+  - prom-conf
+  - prom-rancher-sd
+  stdin_open: true
+  mem_limit: 8192000000
+node-exporter:
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.container.pull_image: 'always'
+  tty: true
+  image: prom/node-exporter:latest
+  stdin_open: true
+ranch-eye:
+  ports:
+  - 9104:9104/tcp
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.container.pull_image: 'always'
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.dns: 'true'
+  tty: true
+  image: rucknar/ranch-eye:latest
+  stdin_open: true
+  net: host

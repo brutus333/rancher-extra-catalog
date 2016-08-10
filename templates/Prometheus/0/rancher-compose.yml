@@ -1,0 +1,20 @@
+.catalog:
+  name: "Prometheus monitoring stack"
+  version: "0.1.0"
+  description: "Monitoring and Alerting using Prometheus, cadvisor and node_exporter"
+  questions:
+    - variable: "HOST_LABEL"
+      type: "string"
+      description: "Host label required for Prometheus to run on a node"
+      default: "role=promserver"
+      required: true
+prometheus-rancher:
+  scale: 1
+  health_check:
+    port: 9090
+    interval: 2000
+    unhealthy_threshold: 3
+    strategy: recreate
+    request_line: "GET / HTTP/1.0"
+    healthy_threshold: 2
+    response_timeout: 2000
