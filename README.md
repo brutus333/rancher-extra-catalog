@@ -2,6 +2,8 @@
 
 This is an implementation of useful Rancher stacks in format of Rancher catalog
 
-For the moment, only the hekad agent with DockerLogInput & DockerEventInput is implemented
+For the moment, the following stacks are implemented:
 
-I'm planning to add Prometheus stack and Consul stack.
+- Heka Agent
+- Prometheus & node_exporter with service discovery based on Rancher
+- BigIP self publishing

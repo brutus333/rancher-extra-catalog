@@ -1,0 +1,5 @@
+name: SelfPublish
+description: |
+    Self publishing labeled services in BigIP and Rancher load balancer
+version: 0.1.0
+category: LoadBalancer
