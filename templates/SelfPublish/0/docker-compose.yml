@@ -6,7 +6,7 @@ self-publish:
     io.rancher.container.network: 'true'
     io.rancher.container.hostname_override: container_name
     io.rancher.container.dns: 'true'
-  image: brutus333/rancher-selfpublish
+  image: brutus333/rancher-selfpublish:v0.1
   stdin_open: true
   environment:
     BIGIP_ADDRESS: ${bigip_address}
