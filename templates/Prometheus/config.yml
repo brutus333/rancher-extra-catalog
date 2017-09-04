@@ -1,5 +1,5 @@
 name: Prometheus stack
 description: |
-    Prometheus stack with ranch-eye, prometheus, prom-rancher-sd & node_exporter
-version: 0.1.0
-category: MOnitoring
+    Prometheus stack with cadvisor, prometheus, prom-rancher-sd & node_exporter
+version: 0.1.1
+category: Monitoring

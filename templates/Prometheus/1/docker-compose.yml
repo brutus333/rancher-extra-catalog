@@ -9,7 +9,7 @@ prom-conf:
   labels:
     io.rancher.container.pull_image: always
   tty: true
-  image: brutus333/prom-conf:v1.0
+  image: brutus333/prom-conf:v1.1
   stdin_open: true
 prometheus-rancher:
   labels:
@@ -26,7 +26,7 @@ prometheus-rancher:
   - 9090:9090/tcp
   log_opt:
     max-size: 10m
-  image: prom/prometheus:v1.0.1
+  image: prom/prometheus:v1.6.0
   volumes:
   - prometheus:/prometheus
   volumes_from:
@@ -41,15 +41,14 @@ node-exporter:
   tty: true
   image: prom/node-exporter:latest
   stdin_open: true
-ranch-eye:
-  ports:
-  - 9104:9104/tcp
+cadvisor:
   labels:
     io.rancher.scheduler.global: 'true'
-    io.rancher.container.pull_image: 'always'
-    io.rancher.container.hostname_override: container_name
-    io.rancher.container.dns: 'true'
   tty: true
-  image: rucknar/ranch-eye:latest
+  image: google/cadvisor:latest
   stdin_open: true
-  net: host
+  volumes:
+    - "/:/rootfs:ro"
+    - "/var/run:/var/run:rw"
+    - "/sys:/sys:ro"
+    - "/var/lib/docker/:/var/lib/docker:ro"

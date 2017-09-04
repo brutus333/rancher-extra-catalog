@@ -16,9 +16,8 @@ Prometheus's main features are:
 
 This Rancher stack put together several components to monitor efficiently docker containers under Rancher umbrella:
  
- - [ranch-eye](https://github.com/infinityworksltd/ranch-eye): Simple haproxy (1.6) implementation for exposing rancher's implementation of cadvisor stats to an external endpoint.
+ - [cadvisor](https://github.com/google/cadvisor): Analyzes resource usage and performance characteristics of running containers.
  - [prom-rancher-sd](https://github.com/brutus333/prom-rancher-sd): This utility was created to integrate prometheus monitoring to application running in Docker containers.
  - prometheus: the monitoring tool itself
  - node_exporter: Prometheus exporter for OS statistics
-
 
