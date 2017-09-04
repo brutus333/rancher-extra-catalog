@@ -9,7 +9,7 @@ prom-conf:
   labels:
     io.rancher.container.pull_image: always
   tty: true
-  image: brutus333/prom-conf:v1.1
+  image: brutus333/prom-conf:v1.2
   stdin_open: true
 prometheus-rancher:
   labels:
